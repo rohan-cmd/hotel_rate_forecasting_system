@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eef2f7;
+}
+
+.navbar {
+    background: #0d47a1;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #1976d2;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1565c0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    background: #0d47a1;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+}
+
+.upload-box {
+    border: 2px dashed #3f51b5;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #f7f9ff;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    background: #e8eaff;
+}
+
+.upload-box p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.result-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.secondary-btn {
+    padding: 12px 20px;
+    background: #455a64;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: #263238;
+}
+
+.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* 404 Page */
+.container h1 {
+    font-weight: bold;
+}
+
+.container h2 {
+    margin-top: 10px;
+    color: #0d47a1;
+}
+
+.container p {
+    color: #555;
+    font-size: 16px;
+}

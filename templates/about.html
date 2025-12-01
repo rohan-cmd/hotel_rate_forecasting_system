@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About - Hotel RMS</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">Hotel RMS</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="predict.html">Predict</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header style="margin-bottom:18px">
+            <h1>About Hotel Revenue Management System (RMS)</h1>
+            <p class="lead">Intelligent rate forecasting to help hotels make faster, data-driven pricing decisions.</p>
+        </header>
+
+        <section class="section-card">
+            <h2>What is RMS?</h2>
+            <p>
+                The <strong>Hotel Revenue Management System (RMS)</strong> is an easy-to-use platform that analyzes historical room-pricing data
+                and produces accurate forecasts for future rates. It is built to support hotel owners, managers, and revenue analysts who need
+                reliable pricing guidance without spending hours on manual analysis.
+            </p>
+        </section>
+
+        <section class="section-card">
+            <h2>How it works</h2>
+            <p>
+                Upload your historical CSV file of room rates and booking information. RMS preprocesses the data, applies machine learning
+                forecasting models, and returns predicted room rates for future dates. Results are available as a downloadable CSV or as JSON
+                for integration with other systems.
+            </p>
+            <ul class="features-list">
+                <li>Processes seasonal patterns and long-term trends</li>
+                <li>Handles multiple room categories/types</li>
+                <li>Offers CSV download & JSON preview for easy integration</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <h2>Benefits for hotels</h2>
+            <ul class="features-list">
+                <li>Optimize pricing strategy to maximize revenue</li>
+                <li>Improve occupancy and demand planning</li>
+                <li>Save time on manual forecasting work</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <h2>Key features</h2>
+            <div class="two-col">
+                <ul>
+                    <li>User authentication and secure access</li>
+                    <li>File upload for historical data</li>
+                    <li>Model-driven forecasts (short & medium term)</li>
+                </ul>
+                <ul>
+                    <li>Downloadable CSV forecasts</li>
+                    <li>JSON output for integrations or visualizations</li>
+                    <li>Option to store history in database</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>Tech stack</h2>
+            <p>
+                Built with a lightweight and maintainable stack:
+            </p>
+            <p class="muted">Python • Flask • Scikit-Learn • Pandas • MySQL</p>
+        </section>
+    </div>
+
+</body>
+</html>
