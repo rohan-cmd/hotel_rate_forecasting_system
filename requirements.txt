@@ -7,3 +7,5 @@ joblib
 SQLAlchemy
 pymysql
 python-dotenv
+pyodbc
+werkzeug
