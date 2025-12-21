@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container form-box">
-    <h2>Login</h2>
-    <form>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
+    <h2>Login</h2> 
+    <form method="POST">
+        <input type="text" placeholder="Username" name="username" required>
+        <input type="password" placeholder="Password" name="password" required>
         <button class="primary-btn">Login</button>
     </form>
     <p>New user? <a href="{{ url_for('register') }}">Create account</a></p>
