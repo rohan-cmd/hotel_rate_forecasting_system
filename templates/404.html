@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="nav-left">Hotel RMS</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('predict') }}">Predict</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-        </ul>
-    </nav>
-
-    <div class="container" style="text-align:center; padding:60px;">
-        <h1 style="font-size:100px; color:#1565c0;">404</h1>
-        <h2>Oops! Page Not Found</h2>
-        <p>
-            The page you are looking for does not exist. It might have been removed or the URL is incorrect.
-        </p>
-        <a href="home.html" class="primary-btn" style="margin-top:20px;">Go Back Home</a>
-    </div>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="text-align:center; padding:60px;">
+    <h1 style="font-size:100px; color:#1565c0;">404</h1>
+    <h2>Oops! Page Not Found</h2>
+    <p>
+        The page you are looking for does not exist. It might have been removed or the URL is incorrect.
+    </p>
+    <a href="{{ url_for('home') }}" class="primary-btn" style="margin-top:20px;">Go Back Home</a>
+</div>
+{% endblock %}

@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Predict - RMS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Upload Historical Data</h2>
+    <p>Upload a CSV file containing past hotel room pricing data to generate prediction results.</p>
 
-    <nav class="navbar">
-        <div class="nav-left">Hotel RMS</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('predict') }}" class="active">Predict</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <h2>Upload Historical Data</h2>
-        <p>Upload a CSV file containing past hotel room pricing data to generate prediction results.</p>
-
-        <form>
-            <div class="upload-box" onclick="document.getElementById('file-input').click();">
-                <img src="https://cdn-icons-png.flaticon.com/512/685/685662.png" width="60" alt="Upload Icon">
-                <p>Click to upload CSV file</p>
-                <input id="file-input" type="file" accept=".csv" style="display:none;">
-            </div>
-
-            <button class="primary-btn" style="margin-top:20px;">Generate Forecast</button>
-        </form>
-
-        <div class="result-section">
-            <h3>Output Options (Disabled until upload)</h3>
-            <button class="secondary-btn disabled">Download CSV</button>
-            <button class="secondary-btn disabled">View JSON Result</button>
+    <form>
+        <div class="upload-box" onclick="document.getElementById('file-input').click();">
+            <img src="https://cdn-icons-png.flaticon.com/512/685/685662.png" width="60" alt="Upload Icon">
+            <p>Click to upload CSV file</p>
+            <input id="file-input" type="file" accept=".csv" style="display:none;">
         </div>
-    </div>
 
-</body>
-</html>
+        <button class="primary-btn" style="margin-top:20px;">Generate Forecast</button>
+    </form>
+
+    <div class="result-section">
+        <h3>Output Options (Disabled until upload)</h3>
+        <button class="secondary-btn disabled">Download CSV</button>
+        <button class="secondary-btn disabled">View JSON Result</button>
+    </div>
+</div>
+{% endblock %}

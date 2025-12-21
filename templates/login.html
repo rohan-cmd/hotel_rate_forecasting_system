@@ -1,32 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - RMS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="nav-left">Hotel RMS</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('predict') }}">Predict</a></li>
-            <li><a href="{{ url_for('login') }}" class="active">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-        </ul>
-    </nav>
-
-    <div class="container form-box">
-        <h2>Login</h2>
-        <form>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <button class="primary-btn">Login</button>
-        </form>
-        <p>New user? <a href="{{ url_for('register') }}">Create account</a></p>
-    </div>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="container form-box">
+    <h2>Login</h2>
+    <form>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button class="primary-btn">Login</button>
+    </form>
+    <p>New user? <a href="{{ url_for('register') }}">Create account</a></p>
+</div>
+{% endblock %}
