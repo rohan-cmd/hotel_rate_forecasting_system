@@ -39,10 +39,17 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/predict")
+@app.route("/predict", methods=["GET", "POST"])
 def predict():
     if "user" not in session:
         return redirect(url_for("login"))
+    
+    if request.method == "POST":
+        file = request.files.get("csv_file")
+        if not file or file.filename=='':
+            return render_template("predict.html", error="No file uploaded")
+        else:
+            return render_template("predict.html", forecast_ready=True, filename=file.filename)
 
     return render_template("predict.html")
 

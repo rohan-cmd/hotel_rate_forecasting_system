@@ -1,23 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h2>Upload Historical Data</h2>
-    <p>Upload a CSV file containing past hotel room pricing data to generate prediction results.</p>
+    <h2 style="text-align: center;">Upload Historical Data</h2>
+    <p style="text-align: center;">Upload a CSV file containing past hotel room pricing data to generate prediction results.</p>
 
-    <form>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
         <div class="upload-box" onclick="document.getElementById('file-input').click();">
-            <img src="https://cdn-icons-png.flaticon.com/512/685/685662.png" width="60" alt="Upload Icon">
-            <p>Click to upload CSV file</p>
-            <input id="file-input" type="file" accept=".csv" style="display:none;">
+            <img id="upload-icon" src="https://cdn-icons-png.flaticon.com/512/685/685662.png" width="60"
+                alt="Upload Icon">
+            <p id="upload-text">Click to upload CSV file</p>
+            <input id="file-input" type="file" name="csv_file" accept=".csv" style="display:none;" required
+                onchange="showFileName(this)">
         </div>
-
-        <button class="primary-btn" style="margin-top:20px;">Generate Forecast</button>
+        <div style="text-align:center;">
+            <button type="button" id="remove-file-btn" class="secondary-btn" style="display:none; margin-top:10px;"
+                onclick="removeFile()">Remove file</button>
+            <button type="submit" class="primary-btn" style="margin-top:20px;">Generate Forecast</button>
+        </div>
     </form>
 
     <div class="result-section">
-        <h3>Output Options (Disabled until upload)</h3>
-        <button class="secondary-btn disabled">Download CSV</button>
-        <button class="secondary-btn disabled">View JSON Result</button>
+
+        {% if forecast_ready %}
+        <h3>The forecasted price for the room type has been generated for one year ({{ filename }})</h3>
+            <a href="/download-csv" class="secondary-btn" style="text-decoration: none;">
+                Download CSV
+            </a>
+
+            <a href="/view-json" class="secondary-btn" style="text-decoration: none;">
+                View JSON Result
+            </a>
+        {% else %}
+        <h3>Output Options</h3>
+        <button class="secondary-btn disabled">
+            Download CSV
+        </button>
+
+        <button class="secondary-btn disabled">
+            View JSON Result
+        </button>
+        {% endif %}
     </div>
+
 </div>
+<script>
+    function showFileName(input) {
+        if (input.files.length > 0) {
+            const uploadText = document.getElementById("upload-text");
+            const uploadIcon = document.getElementById("upload-icon");
+            const removeBtn = document.getElementById("remove-file-btn");
+
+            uploadText.innerText = "Selected file: " + input.files[0].name;
+            uploadText.style.fontWeight = "bold";
+            uploadText.style.fontSize = "18px";
+
+            uploadIcon.style.display = "none";
+            removeBtn.style.display = "inline-block";
+        }
+    }
+
+    function removeFile() {
+        const fileInput = document.getElementById("file-input");
+        const uploadText = document.getElementById("upload-text");
+        const uploadIcon = document.getElementById("upload-icon");
+        const removeBtn = document.getElementById("remove-file-btn");
+
+        fileInput.value = "";  // clear file
+        uploadText.innerText = "Click to upload CSV file";
+        uploadText.style.fontWeight = "normal";
+        uploadText.style.fontSize = "inherit";
+
+        uploadIcon.style.display = "block";
+        removeBtn.style.display = "none";
+    }
+</script>
+
 {% endblock %}
