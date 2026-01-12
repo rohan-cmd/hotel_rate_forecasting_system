@@ -13,22 +13,19 @@ The **Hotel Rate Forecasting System** is a data-driven platform designed to help
 The system requires a CSV file containing historical hotel performance data.  
 The CSV file **must include the following columns**:
 
-+-----------------------+----------------------------------------------------+
-| Column Name           | Description                                        |
-+-----------------------+----------------------------------------------------+
-| Stay Date             | Date of stay                                       |
-| Day Of Week           | Day corresponding to the stay date                 |
-| Room Type Name        | Descriptive name of the room type                  |
-| Room Type Code        | Unique code for the room type                      |
-| Room Type Category    | Category of the room (e.g., Standard, Deluxe)      |
-| Market Segment        | Customer market segment                            |
-| Source Code           | Booking source identifier                          |
-| Rate Plan             | Applied rate plan                                  |
-| Room Sold             | Number of rooms sold                               |
-| Revenue               | Total revenue generated                            |
-| ADR                   | Average Daily Rate                                 |
-| Occupancy             | Occupancy percentage or ratio                      |
-+-----------------------+----------------------------------------------------+
+Column Name :            
+- Stay Date             
+- Day Of Week       
+- Room Type Name
+- Room Type Code        
+- Room Type Category    
+- Market Segment       
+- Source Code          
+- Rate Plan            
+- Room Sold            
+- Revenue               
+- ADR                  
+- Occupancy            
 
 > **Note:** All columns must be present in the CSV file for the system to function correctly.
 
