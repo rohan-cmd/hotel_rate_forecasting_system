@@ -4,7 +4,7 @@
     <h2 style="text-align: center;">Upload Historical Data</h2>
     <p style="text-align: center;">Upload a CSV file containing past hotel room pricing data to generate prediction results.</p>
 
-    <form action="/predict" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
         <div class="upload-box" onclick="document.getElementById('file-input').click();">
             <img id="upload-icon" src="https://cdn-icons-png.flaticon.com/512/685/685662.png" width="60"
                 alt="Upload Icon">
@@ -23,11 +23,11 @@
 
         {% if forecast_ready %}
         <h3>The forecasted price for the room type has been generated for one year ({{ filename }})</h3>
-            <a href="/download-csv" class="secondary-btn" style="text-decoration: none;">
+            <a href="{{ download_url }}" class="secondary-btn" style="text-decoration: none;">
                 Download CSV
             </a>
 
-            <a href="/view-json" class="secondary-btn" style="text-decoration: none;">
+            <a href="{{ view_url }}" class="secondary-btn" style="text-decoration: none;">
                 View JSON Result
             </a>
         {% else %}

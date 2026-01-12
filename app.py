@@ -1,9 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify, send_file
 from db import get_connection
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
+import json
+from datetime import datetime
+from services.predictor import predict_prices
 
 app = Flask(__name__)
 app.secret_key = '_system_management_revenue_'
+
+UPLOAD_FOLDER = "uploads"
+PREDICTION_FOLDER = "predictions"
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(PREDICTION_FOLDER, exist_ok=True)
 
 # ------------------------------
 # DATABASE SETUP
@@ -49,9 +59,38 @@ def predict():
         if not file or file.filename=='':
             return render_template("predict.html", error="No file uploaded")
         else:
-            return render_template("predict.html", forecast_ready=True, filename=file.filename)
+            file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+            file.save(file_path)
+            prediction_data = predict_prices(file_path)
+            json_filename = f"prediction_{datetime.now().strftime('%Y%m%d%H%M%S')}.json"
+            json_path = os.path.join(PREDICTION_FOLDER, json_filename)
+            with open(json_path, "w") as f:
+                json.dump(prediction_data, f, indent=4)
+            os.remove(file_path)
+
+            return render_template("predict.html", forecast_ready=True, filename=file.filename, view_url=url_for("view_json", filename=json_filename), download_url=url_for("download_json", filename=json_filename))
 
     return render_template("predict.html")
+
+@app.route("/view/<filename>")
+def view_json(filename):
+    if "user" not in session:
+        return redirect(url_for("login"))
+    
+    with open(os.path.join(PREDICTION_FOLDER, filename)) as f:
+        data = json.load(f)
+    return jsonify(data)
+
+@app.route("/download/<filename>")
+def download_json(filename):
+    if "user" not in session:
+        return redirect(url_for("login"))
+    
+    return send_file(
+        os.path.join(PREDICTION_FOLDER, filename),
+        as_attachment=True
+    )
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
